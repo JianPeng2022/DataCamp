@@ -1,2 +1,1 @@
-# DataCamp
-learning notes for datacamp courses
+These are learning notes for [DataCamp](https://www.datacamp.com) courses, and the filename corresponds to the course name. These notes are solely for learning purposes and are not intended for any other use.
