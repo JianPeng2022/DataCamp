@@ -22,6 +22,17 @@ Delta: With Databricks, we recommend storing data in **Delta Lake tables**, an o
 
 Unity Catalog: **Unity Catalog** is the centralized governance solution for the Databricks Lakehouse. Using straightforward **SQL GRANT** statements, administrators can control **access to all data assets in the Lakehouse**, even **beyond just the data**. Governance covers data catalogs, notebooks, clusters, warehouses, even the Databricks Feature Store, and any machine learning models.
 
+### Administering a Databricks workspace
+**Account Admin** 账户管理员
+The top level of administration in Databricks is the Account Admin. This initially is the individual who sets up the Databricks Account, and has full control over the Databricks deployment. Typically, the Account Admin is focused on making sure all the Databricks environments are set up the right way. Their key responsibilities include creating workspaces, adding users to the specific workspaces, governing access to those workspaces, and monitoring the account subscription for billing.
 
+**Account Console** 账户控制台
+If you are the Account Admin for your Databricks deployment, you will have access to the Account Console. This can be found at the URL on the screen and allows for various account-wide activities. This will be a key location during the initial setup. In the account console, you can see things like the total list of workspaces in your account, where your datasets are hosted in the data lakehouse, and how much your account uses from a Databricks Unit, or DBU, perspective.
+- Workplace: information about all workplaces in your account, create a new workplace in any cloud as part of your account
+- Data: The Data section is a single location where you can view and manage your various data catalogs as part of your overall data governance strategy with Unity Catalog.
+- Users & Groups: manage how you provide access to your organization once users have been added to your account.
+- Settings: allows you to create account-wide configurations, such as integrating your identity provider or enabling features for your workspaces.
 
-
+A Databricks workspace consists of two distinct pieces. 
+- The first component is the "**Data Plane**", the workspace and resources directly deployed into the customer cloud environment. This is where all **data, code, and compute resources reside**, ensuring that Databricks conforms to your existing cloud security practices.
+- The second component is the "**Control Plane**", which resides in the Databricks cloud environment. This section will control back-end processes like security and version updates and gather basic metadata about what is happening in your deployment, as well as sending requests to the Data Plane in your environment to run jobs, create clusters, and any other activities needed. When users login to Databricks, they are logging into the Web Application that is hosted in the Databricks Control Plane.
