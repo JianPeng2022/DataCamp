@@ -27,6 +27,6 @@ There are 4 types of Widgets:
 - Combobox: Text and dropdown. Select a value from the provided list or input one in the text box.
 - Multiselect: Select one or more values from a list of provided values
 - for example:
-    -   dbutils.widgets. text("Text", "Hello World! ")
-    dbutils.widgets.dropdown ("Dropdown", "1", [str(x) for x in range (1, 10)]) dbutils.widgets.combobox ("Combobox", "A",["A", "B", "C"])
-    dbutils widgets-multiselect ("Multiselect","Yes", ["Yes", "No", "Maybe"])
+    - dbutils.widgets. text("Text", "Hello World! ")
+    - dbutils.widgets.dropdown ("Dropdown", "1", [str(x) for x in range (1, 10)]) dbutils.widgets.combobox ("Combobox", "A",["A", "B", "C"])
+    - dbutils widgets-multiselect ("Multiselect","Yes", ["Yes", "No", "Maybe"])
