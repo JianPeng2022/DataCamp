@@ -1,5 +1,5 @@
 
-[Certification](./Git/01Introduction_to_Git_Certificate.pdf)
+[Certification](./01Introduction_to_Git_Certificate.pdf)
 
 
 ## 01 Version Control
