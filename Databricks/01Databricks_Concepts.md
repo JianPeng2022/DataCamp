@@ -92,3 +92,12 @@ Data transformations in Databricks
 
 **Data orchestration**: a form of automation, enables data engineers to automate the end-to-end data life cycle. Databricks can do this.
 
+## 04 Databricks SQL
+Photon: SQL-optimized performance
+Databricks SQL vs. other Data Warehouses:
+- open file format (Delta) vs. proprietary data format
+- separation of compute and storage vs. Storage often tied to compute
+- ANSI SQL (open american national standart) vs. Tech-specific SQL
+- Integrated into other data workloads vs. usually lacking advanced analytics
+
+Raw data -> Bronze (Raw integration) -> Silver(filtered, cleaned, augmented)-> Gold (business level aggregates) -> BI,ML...
