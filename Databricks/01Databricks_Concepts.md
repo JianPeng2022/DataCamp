@@ -58,3 +58,37 @@ If you are the Account Admin for your Databricks deployment, you will have acces
 A Databricks workspace consists of two distinct pieces. 
 - The first component is the **Data Plane**, the workspace and resources directly deployed into the customer cloud environment. This is where all **data, code, and compute resources reside**, ensuring that Databricks conforms to your existing cloud security practices.
 - The second component is the **Control Plane**, which resides in the Databricks cloud environment. This section will control back-end processes like security and version updates and gather basic metadata about what is happening in your deployment, as well as sending requests to the Data Plane in your environment to run jobs, create clusters, and any other activities needed. When users login to Databricks, they are logging into the Web Application that is hosted in the Databricks Control Plane.
+
+## 03 Data Engineering in Databricks
+Common data sources and types:
+- Delta tables(Databricks format)
+- File formats (SCV, JSON, Parquet, XML...)
+- Database (MySQL, postgres, EDW)
+- Streaming data
+- Images/Videos
+  
+Kinds of tables in Databricks:
+  - Managed Tables: Default type, stored with Unity Catalog, Databricks managed
+  - External tables: Stored in another location, have to set LOCATION, customer managed the table
+
+Data transformations in Databricks
+- **schema manipulation**: add, remove and redefine columns...
+- **filtering**: reduce Dataframe to subset of data, pass multiple criteria...
+- **nested data**: arrays or struct data, expand or contract, wide to long or long to wide
+- **aggregation**: group data based on colunms, calculate data summarizations
+
+**Auto Loader** processes new data files as they land in a data lake. Pipe data from cloud storage into Delta Lake as it arrives, "Set and frogot" model eliminates complex setup.
+*spark.readStream <br>
+    .format("cloudFiles") <br>
+    .option("cloudFiles.format","json")<br>
+    .load(file_path)*
+
+*Spark Structured Streaming* format("kafka")
+1. Gather information about the Kafka topic
+2. Read the data into a Structured Streaming Dataframe
+3. Clean the streaming data
+4. Join our other dataset into the stream
+5. Write the stream as a Delta table in a new data lake bucket
+
+**Data orchestration**: a form of automation, enables data engineers to automate the end-to-end data life cycle. Databricks can do this.
+
