@@ -49,9 +49,12 @@ If you are the Account Admin for your Databricks deployment, you will have acces
 - Users & Groups: manage how you provide access to your organization once users have been added to your account.
 - Settings: allows you to create account-wide configurations, such as integrating your identity provider or enabling features for your workspaces.
 
-A Databricks workspace consists of two distinct pieces. 
-- The first component is the "**Data Plane**", the workspace and resources directly deployed into the customer cloud environment. This is where all **data, code, and compute resources reside**, ensuring that Databricks conforms to your existing cloud security practices.
-- The second component is the "**Control Plane**", which resides in the Databricks cloud environment. This section will control back-end processes like security and version updates and gather basic metadata about what is happening in your deployment, as well as sending requests to the Data Plane in your environment to run jobs, create clusters, and any other activities needed. When users login to Databricks, they are logging into the Web Application that is hosted in the Databricks Control Plane.
-
 **Workspace Admin** 
+- Focuses on a specific set of workspaces, usually as part of their business unit within the organization
+- Managing identities in your workspace
+- Creating and managing compute resources
+- Managing workspace features and settings
 
+A Databricks workspace consists of two distinct pieces. 
+- The first component is the **Data Plane**, the workspace and resources directly deployed into the customer cloud environment. This is where all **data, code, and compute resources reside**, ensuring that Databricks conforms to your existing cloud security practices.
+- The second component is the **Control Plane**, which resides in the Databricks cloud environment. This section will control back-end processes like security and version updates and gather basic metadata about what is happening in your deployment, as well as sending requests to the Data Plane in your environment to run jobs, create clusters, and any other activities needed. When users login to Databricks, they are logging into the Web Application that is hosted in the Databricks Control Plane.
