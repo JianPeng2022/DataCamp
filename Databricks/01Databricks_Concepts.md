@@ -101,3 +101,14 @@ Databricks SQL vs. other Data Warehouses:
 - Integrated into other data workloads vs. usually lacking advanced analytics
 
 Raw data -> Bronze (Raw integration) -> Silver(filtered, cleaned, augmented)-> Gold (business level aggregates) -> BI,ML...
+
+##### SQL Compute workloads are inherently different than designing computer clusters for data science or data engineering workloads
+
+SQL Warehouse Configuration Options
+1. Cluster Name
+2. Cluster Size (S, M, L...)
+3. Scaling behavior
+4. Cluster Typr: 
+      1. classic: most basic SQL compute, in customer cloud
+      2. Pro: more advanced features than Classic, also in customer cloud
+      3. Serverless: Cutting edge features, in databricks cloud, most cost performant.
