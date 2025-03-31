@@ -119,3 +119,20 @@ Query parameters: more flexible than filters, and supports more kinds of selecto
 FROM n.trips <br>
 WHERE pickup_zip = 1000 <br>
 AND {{nullCheck}} IS NOT NULL <br>*
+
+## 05 Large-scale Application and Machine Learning
+
+MLOps in the Lakehouse
+1. DataOps
+   - Integrating data across different sources (AutoLoader)
+   - Transforming data into a usable, clean format (Deltac Live Tables)
+   - Creating useful features for models (Feature Store)
+2. ModelOps
+    - Develop and train different models (Notebooks)
+    - Maschine learning templates and automation (AutoML)
+    - Track parameters, metrics, and trials (MLFlow)
+    - Centralize and consume models (Model Registry)
+3. DevOps
+    - Govern access to different models (Unity Catalog)
+    - Continuous Integration and Continuous Deployment (CI/CD) for model versions (Model Registry) 
+    - Deploy models for consumption (Serving Endpoints)
