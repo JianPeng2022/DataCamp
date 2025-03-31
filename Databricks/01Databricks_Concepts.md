@@ -112,3 +112,10 @@ SQL Warehouse Configuration Options
       1. classic: most basic SQL compute, in customer cloud
       2. Pro: more advanced features than Classic, also in customer cloud
       3. Serverless: Cutting edge features, in databricks cloud, most cost performant.
+
+query SQL, also Dashboard...
+Query parameters: more flexible than filters, and supports more kinds of selectors, created in the query by using the {{}} syntax <br>
+*SELECT * <br>
+FROM n.trips <br>
+WHERE pickup_zip = 1000 <br>
+AND {{nullCheck}} IS NOT NULL <br>*
