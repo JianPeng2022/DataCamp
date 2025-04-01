@@ -136,3 +136,27 @@ MLOps in the Lakehouse
     - Govern access to different models (Unity Catalog)
     - Continuous Integration and Continuous Deployment (CI/CD) for model versions (Model Registry) 
     - Deploy models for consumption (Serving Endpoints)
+
+**Single-node vs. Multi-node**
+- great for experimenting and starting, easier initial setup, but hard to implement in production
+- great for production workloads, easier maintenance long-term, highly scalable (Databricks)
+
+
+**ML Runtime**
+- Extension of Databricks compute
+- Optimized for machine learning applications
+
+**AutoML**
+- 'Glass box' approach to automated maschine learning
+- Leverages open-source libraries
+- Creates models based on data and targeted prediction
+- Provides notebook withe generated code for further
+
+**MLFlow**
+- Open-soource framework
+- End-to-end machine learning lifecycle management
+- Track, evaluate, manage and deploy
+- Pre-installed on ML Runtime
+- MLFlow Models can store a model from any machine learning framework
+- Models are stored alongside different configurations and artifacts
+- Models can be "translated" into another kind of model based on needs. (scikit-learn, pyfunc, spark, tensorflow)
