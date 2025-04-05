@@ -64,3 +64,25 @@ Updating values and metadata
 
 Deleting vectors
 - *index.delete(ids=[...])*
+
+**Batching upserts**
+
+Upserting limitations: limited rate of requests, size of requests. -> Batching: breaking requests up into smaller *chunks*.
+
+def chunks(iterable, batch_size=100):
+  
+  it= iter(iterable)
+  chunk = tuple(itertools.islice(it, batch_size))
+  
+  while chunk:
+    
+      yield chunk
+      
+      chunk=tuple(itertools.islice(it, batch_size))
+
+Sequential batching: splitting requests and sending them sequentially one-by-one
+- *pc.Pinecone(api_key="") index = pc.Index('') for chunk in chunk(vectors): index.upsert(vectors=chunk)*
+- solve rate and size limiting, but slow
+
+So parallel batching: splitting requests and sending them in parallel
+- pc =Pinecone(api_key="", pool_threads=30)  with pc.Index('', pool_threads=30) as index: async_results = [index.upsert(vectors=chunk,async_req=True) for chunk inchunks(vectors, batch_size=100)] [async_result.get() for async_result in async_results]
