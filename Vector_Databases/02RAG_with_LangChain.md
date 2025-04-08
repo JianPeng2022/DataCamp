@@ -20,4 +20,15 @@ LangChain is document loaders:
 - *chunk_overlap*: include information beyond the boundary
 
 **Text Splitting, embeddings, and Vector storage**
-- *from*
+- *from langchain_text_splitters import CharacterTextSplitter*
+- *text_splitter = CharacterTextSplitter(separator=" ", chunk_size = 100, chunk_overlap=10)*
+- *chunks = text_splitter.split_text(text)*
+- *from langchain_text_splitters import RecursiveCharacterTextSplitter*
+- *splitter=RecursiveCharacterTextSplitter(separators=[],chunk_size=100,chunk_overlap=10)*
+
+**Splitting documents**
+- *from langchain_community.document_loaders import PyPDFLoader*
+- *loader =PyPDFLoader("research_paper.pdf")*
+- *documents = loader.load()*
+- *splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=200)*
+- *chunks=splitter.split_documents(documents)*
