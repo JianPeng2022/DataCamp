@@ -18,3 +18,6 @@ LangChain is document loaders:
 **splitting or chunking**: usually big chunks are slow, difficult to interpret, but small chunks are lack of context.
 - *chunk_size*
 - *chunk_overlap*: include information beyond the boundary
+
+**Text Splitting, embeddings, and Vector storage**
+- *from*
