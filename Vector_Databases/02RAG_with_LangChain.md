@@ -32,3 +32,24 @@ LangChain is document loaders:
 - *documents = loader.load()*
 - *splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=200)*
 - *chunks=splitter.split_documents(documents)*
+
+## 02 Building an LangChain Expression Language (LCEL) retrieval Chain
+
+- Input -> RunnablePassthrough -> Question
+- Input -> Retriever -> Context
+- Question + Context -> Prompt -> LLM -> Parser
+
+**01 Instantiating a retriever**
+- *vector_store = Chroma.from_documents(documents=chunks, embedding = embedding_model)*
+- *retriever = vector_store.as_retriever(search_type="similarity",search_kwargs={"k":2}*
+
+**02 Creating a prompt template**
+- *from langchain_core.prompts import ChatPromptTemplate*
+- *prompt = ChatPromptTemplate.from_template("""Use the following pieces of context to answer the questin at the end. If you don't know the answer, say that you don't know. Context: {context} Question:{question}"""*
+- *llm=ChatOpenAI(model="gpt-4o-mini",api_key="...",temperature=0*
+
+**03 Building an LCEL retrieval chain**
+- *from langchain_core.runnables import RunnablePassthrough*
+- *from langchain_core.output_parsers import StrOutputParser*
+- *chain = ({"context":retriever, "question":RunnablePassthrough()}) 丨 prompt 丨 llm 丨 StrOutputParser())*
+- *result=chain.invoke({"question": "what are the key findings or results presented in the paper"})*
