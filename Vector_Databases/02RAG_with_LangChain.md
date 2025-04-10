@@ -41,11 +41,11 @@ LangChain is document loaders:
 
 **01 Instantiating a retriever**
 - *vector_store = Chroma.from_documents(documents=chunks, embedding = embedding_model)*
-- *retriever = vector_store.as_retriever(search_type="similarity",search_kwargs={"k":2}*
+- *retriever = vector_store.as_retriever(search_type="similarity",search_kwargs={"k":2})*
 
 **02 Creating a prompt template**
 - *from langchain_core.prompts import ChatPromptTemplate*
-- *prompt = ChatPromptTemplate.from_template("""Use the following pieces of context to answer the questin at the end. If you don't know the answer, say that you don't know. Context: {context} Question:{question}"""*
+- *prompt = ChatPromptTemplate.from_template("""Use the following pieces of context to answer the questin at the end. If you don't know the answer, say that you don't know. Context: {context} Question:{question})"""*
 - *llm=ChatOpenAI(model="gpt-4o-mini",api_key="...",temperature=0*
 
 **03 Building an LCEL retrieval chain**
@@ -53,3 +53,13 @@ LangChain is document loaders:
 - *from langchain_core.output_parsers import StrOutputParser*
 - *chain = ({"context":retriever, "question":RunnablePassthrough()}) 丨 prompt 丨 llm 丨 StrOutputParser())*
 - *result=chain.invoke({"question": "what are the key findings or results presented in the paper"})*
+
+## Improving the RAG Architecture
+**Loading and splitting code files**
+**Loding Markdown files (.md)**
+- *from langchain_community.document_loaders import UnstructuredMarkdownLoader*
+- loader = UnstructuredMarkdownLoader("README.md")
+- markdown_content = loader.load()
+- print(markdown_content[0])
+
+**Loading python files (.py)**
