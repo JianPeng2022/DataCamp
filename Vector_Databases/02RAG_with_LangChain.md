@@ -63,3 +63,42 @@ LangChain is document loaders:
 - print(markdown_content[0])
 
 **Loading python files (.py)**
+- Integrated into RAG applications for writing or fixing code, creating docs, etc..
+- *from abc import ABC, abstractmethod*
+- class LLM(ABC):
+  - @abstractmethod
+  - def complete_sentence(self, prompt):
+    - pass
+- *from langchain_community.document_loaders import PythonLoader*
+- loader = PythonLoader('chatbot.py')
+- python_data = loader.load()
+- print (python_data[0])
+
+Parsing Python files can be tricky, because it has its own syntax, so we have to **splitting code files**
+- python_splitter = RecursiveCharacterTextSplitter(chunk_size=150, chunk_overlap=10)
+- chunks = python_splitter.split_documents(python_data)
+- for i, chunk in enumerate(chunks[:3]):
+  - print(f"Chunk {i+1}: {chunk.page_content}")
+  - This result is not good
+  
+**Splitting by language**
+- *from langchain_text_splitters import RecursiveCharacterTextSplitter, Language*
+- python_splitter = RecursiveCharacterTextSplitter.from_language(language=Language.PYTHON, chunk_size=150, chunk_overlap=10)
+- chunks = python_splitter.split_documents(data)
+
+**Advanced splitting methods**: Context of surrounding text -> splitting on tokens *TokenTextSplitter*
+- import tiktoken
+- from langchain_text_splitters import TokenTextSplitter
+- example_string = "Mary had a little lamb, it's fleece was white as snow."
+- encoding = tiktoken.encoding_for_model('gpt-4o-mini')
+- splitter = TokenTextSplitter(encoding_name = encoding.name, chunk_size=10, chunk_overlap=2)
+- chunks = splitter.split_text(example_string)
+- for i, chunk in enumerate(chunks):
+  - print(chunk)
+
+**semantic splitting**
+- from langchain_openai import OpenAIEmbeddings
+- from langchain_experimental.text_splitter import SemanticChunker
+- embeddings = OpenAIEmbeddings(api_key"",model='text-embedding-3-small')
+- semantic_splitter = SemanticChunker(embeddings=embeddings,breakpoint_threshold_type='gradient', breakpoint_threshold_amount=0.8)
+- chunks=semantic_splitter.split_documents(data)
