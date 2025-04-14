@@ -102,3 +102,6 @@ Parsing Python files can be tricky, because it has its own syntax, so we have to
 - embeddings = OpenAIEmbeddings(api_key"",model='text-embedding-3-small')
 - semantic_splitter = SemanticChunker(embeddings=embeddings,breakpoint_threshold_type='gradient', breakpoint_threshold_amount=0.8)
 - chunks=semantic_splitter.split_documents(data)
+
+
+**Optimizing document retrieval**
