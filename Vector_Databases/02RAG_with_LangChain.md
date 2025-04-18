@@ -105,3 +105,24 @@ Parsing Python files can be tricky, because it has its own syntax, so we have to
 
 
 **Optimizing document retrieval**
+**Dense**: Encode chunks as a single vector with *non-zero* components. Capturing semantic meaning, but computationally expensive.
+
+**Sparse**: Encode using *word matching* with mostly zero components. Precise, explainable, rare-word handling, but generalizability.
+
+**Sparse retrieval methods**
+- TF-IDF: Encodes documents using the words that make the document unique.
+- BM25: Helps mitigate high-frequency words from saturating the encoding.
+  - from langchain_community.retrievers import BM25Retriever
+  - chunks = ["Python was created by Guido van Rossum and released in 1991.","Python is a popular language for machine learning (ML).","The PyTorch library is a popular Python library for AI and ML."]
+  - bm25_retriever = BM25Retriever.from_texts(chunks, k=3)
+  - results = bm25_retriever.invoke("when was Python created?")
+  - print("Most Relevant Document:")
+  - print(results[0].page_content)
+  - *Most Relevant Document:Python was created by Guido van Rossum and released in 1991.*
+
+BM25 in RAG
+ - retriever = BM25Retriever.from_documents(    documents=chunks,     k=5)
+ - chain = ({"context": retriever, "question": RunnablePassthrough()}         | prompt         | llm         | StrOutputParser())
+ - print(chain.invoke("How can LLM hallucination impact a RAG application?"))
+
+**RAG Evaluation**
